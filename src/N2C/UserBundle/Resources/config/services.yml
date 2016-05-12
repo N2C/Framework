@@ -1,0 +1,4 @@
+services:
+#    n2_c_user.example:
+#        class: N2C\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

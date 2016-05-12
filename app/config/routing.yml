@@ -1,0 +1,13 @@
+n2_c_core:
+    resource: "@N2CCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+n2_c_user:
+    resource: "@N2CUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
