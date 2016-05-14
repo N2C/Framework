@@ -16,23 +16,29 @@ class Builder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
-    private $containerBuilder;
+    private $navbarServices;
 
-    public function __construct(ContainerBuilder $containerBuilder){
-        $this->containerBuilder = $containerBuilder;
+    public function __construct()
+    {
+        $this->navbarServices = array();
     }
 
-    public function mainMenu(FactoryInterface $factory, array $options)
+    public function addNavbarService(NavbarInterface $navbarService)
     {
-        foreach($this->containerBuilder->findTaggedServiceIds('n2c.core.navbar') as ){
+        $this->navbarServices[] = $navbarService;
+    }
 
-        }
 
+    public function navbarMenu(FactoryInterface $factory, array $options)
+    {
 
         $menu = $factory->createItem('root');
-        $menu->addChild('Home', array('uri' => '/'));
-        $menu->addChild('Comments', array('uri' => '#comments'));
-        $menu->addChild('Symfony2', array('uri' => 'http://symfony-reloaded.org/'));
+
+        //if(empty($this->navbarServices)){throw new \Exception('erreur');}
+
+        foreach ($this->navbarServices as $menuBuilder){
+            $menuBuilder->getNavbarItem($menu);
+        }
 
         return $menu;
     }
