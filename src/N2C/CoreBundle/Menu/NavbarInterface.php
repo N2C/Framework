@@ -9,7 +9,6 @@
 namespace N2C\CoreBundle\Menu;
 
 
-use Knp\Menu\MenuItem;
 
 interface NavbarInterface
 {

@@ -4,6 +4,7 @@ services:
 #        arguments: ["@service_id", "plain_value", %parameter%]
     n2c_user.menu:
         class: N2C\UserBundle\Menu\Navbar
+        arguments: ['@security.authorization_checker']
         tags:
             - { name: n2c_core.navbar }
 

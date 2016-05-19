@@ -46,13 +46,11 @@
     <!-- Side navigation links -->
     <ul class="collapsible collapsible-accordion">
         <li><a href="#intro" class="waves-effect waves-light"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#" class="waves-effect waves-light"><i class="fa fa-money"></i> Sales</a></li>
-        <li><a href="#" class="waves-effect waves-light"><i class="fa fa-line-chart"></i> Conversion</a></li>
         <li><a href="#" class="waves-effect waves-light"><i class="fa fa-users"></i> Website Traffic</a></li>
-        <li><a href="#" class="waves-effect waves-light"><i class="fa fa-search"></i> SEO</a></li>
-        <li><a href="#" class="waves-effect waves-light"><i class="fa fa-share-alt"></i> Social</a></li>
     </ul>
     <!--/. Side navigation links -->
+
+    {# knp_menu_render('n2c.navbar', {'currentClass': 'active', 'template': 'N2CCoreBundle:Menu:knp_menu.html.twig'}) #}
 
 </ul>
 <!--/. Sidebar navigation -->
@@ -60,30 +58,33 @@
 <!--Navbar-->
 <nav class="double-navbar navbar navbar-fixed-top unique-color z-depth-2 top-nav-collapse" role="navigation">
     <div class="container-fluid">
-        <div class="navbar-header pull-left">
+        <ul class="list-inline text-center pull-left">
             <!-- SideNav slide-out button -->
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            <li><a href="#" id="button-collapse" data-activates="slide-out" class="waves-effect waves-light"><i class="fa fa-bars"></i></a></li>
             <!--/. SideNav slide-out button -->
 
-        </div>
+        </ul>
 
         <!-- Navbar Icons -->
         <ul class="list-inline pull-right text-center">
-            <li><a href="#" class="waves-effect waves-light" data-toggle="modal" data-target="#contact-form"><i class="fa fa-question"></i><br><span>Help</span></a></li>
-            <li><a href="#" class="waves-effect waves-light" data-toggle="modal" data-target="#contact-form"><i class="fa fa-cogs"></i><br><span>Settings</span></a></li>
-            <li><a href="#" class="waves-effect waves-light" data-toggle="modal" data-target="#contact-form"><i class="fa fa-sign-out"></i><br><span>Logout</span></a></li>
+            <li><a href="#" class="waves-effect waves-light" data-toggle="modal" data-target="#contact-form"><i class="fa fa-question"></i></a></li>
+            <li><a href="#" class="waves-effect waves-light" data-toggle="modal" data-target="#contact-form"><i class="fa fa-cogs"></i></a></li>
+            <li><a href="#" class="waves-effect waves-light" data-toggle="modal" data-target="#contact-form"><i class="fa fa-sign-out"></i></a></li>
 
         </ul>
         <!--/. Navbar Icons -->
     </div>
 </nav>
+
 <!--/.Navbar-->
 </header>
 
-{{ knp_menu_render('N2CCoreBundle:Builder:navbarMenu') }}
 
 
-{% block body %}{% endblock %}
+<div style="margin-top: 70px;">
+    {% block body %}{% endblock %}
+</div>
+
 
 <p></p>
 
@@ -105,7 +106,7 @@
     {% endjavascripts %}
     <script>
         // Initialize collapse button
-        $(".button-collapse").sideNav();
+        $("#button-collapse").sideNav();
         // Initialize collapsible
         $('.collapsible').collapsible();
     </script>

@@ -17,9 +17,11 @@ class Builder implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     private $navbarServices;
+    private $factory;
 
-    public function __construct()
+    public function __construct(FactoryInterface $factory)
     {
+        $this->factory = $factory;
         $this->navbarServices = array();
     }
 
@@ -29,15 +31,18 @@ class Builder implements ContainerAwareInterface
     }
 
 
-    public function navbarMenu(FactoryInterface $factory, array $options)
+    public function getNavbarMenu(array $options)
     {
 
-        $menu = $factory->createItem('root');
+        $menu = $this->factory->createItem('root');
 
-        //if(empty($this->navbarServices)){throw new \Exception('erreur');}
-
+        $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        $menu->addChild('Projects')
+            ->setAttribute('icon', 'fa fa-list');
+        $menu->addChild('Employees')
+            ->setAttribute('icon', 'fa fa-group');
         foreach ($this->navbarServices as $menuBuilder){
-            $menuBuilder->getNavbarItem($menu);
+            $menuBuilder->getNavbarItems($menu);
         }
 
         return $menu;

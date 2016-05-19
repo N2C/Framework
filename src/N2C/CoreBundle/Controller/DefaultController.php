@@ -12,7 +12,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $menu = $this->get('n2c_core.menu_builder');
+
         return $this->render('N2CCoreBundle:Default:index.html.twig');
     }
 }

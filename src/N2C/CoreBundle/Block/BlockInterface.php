@@ -9,9 +9,16 @@
 namespace N2C\CoreBundle\Block;
 
 
+use Symfony\Component\Form\FormBuilderInterface;
+
 interface BlockInterface
 {
-    public function getName();
     
+    public function buildForm(FormBuilderInterface $builder);
+
     public function getBlock();
+    
+    public function getTemplate($extension);
+
+    public function process($template, $settings);
 }

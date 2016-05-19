@@ -12,12 +12,23 @@ namespace N2C\UserBundle\Menu;
 
 use Knp\Menu\MenuItem;
 use N2C\CoreBundle\Menu\NavbarInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class Navbar implements NavbarInterface
 {
-    public function getNavbarItems(MenuItem $menuItem){
-        $menuItem->addChild('Home', array('uri' => '/'))
-            ->addChild('Comments', array('uri' => '#comments'))
-            ->addChild('Symfony2', array('uri' => 'http://symfony-reloaded.org/'));
+    private $authorizationChecker;
+    public function __construct(AuthorizationCheckerInterface $authorizationChecker)
+    {
+        $this->authorizationChecker = $authorizationChecker;
     }
+
+    public function getNavbarItems(MenuItem $menuItem){
+        $menuItem->addChild('Home', array('uri' => '/'));
+
+        if($this->authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')){
+            $menuItem->addChild('Comments', array('uri' => '#comments'));
+        }
+
+    }
+
 }
