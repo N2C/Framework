@@ -21,6 +21,7 @@ class AppKernel extends Kernel
 
             new \N2C\CoreBundle\N2CCoreBundle(),
             new N2C\UserBundle\N2CUserBundle(),
+            new N2C\MediaBundle\N2CMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

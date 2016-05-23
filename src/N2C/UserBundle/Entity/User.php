@@ -20,6 +20,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="N2C\MediaBundle\Entity\Media", cascade={"persist"})
+     */
+    protected $profileImage;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $firstname;
