@@ -1,0 +1,47 @@
+{% extends "N2CCoreBundle::layout.html.twig" %}
+{% block body %}
+    <div class="col-md-3">
+        <div class="testimonial-card z-depth-1">
+            <div class="card-up default-color-dark">
+            </div>
+            <div class="avatar"><img src="http://mdbootstrap.com/wp-content/uploads/2015/10/avatar-2.jpg" class="img-circle img-responsive">
+            </div>
+            <div class="card-content">
+                <h5>Anna Maria</h5>
+                <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci, voluptatum placeat ducimus vero commodi provident culpa accusamus nostrum dolor, labore ratione eius.</p>
+            </div>
+        </div>
+    </div>
+<div class="col-md-6">
+    <ul class="nav nav-tabs tabs-4">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+        <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+    </ul>
+
+    <div class="tab-content card-panel blue-grey lighten-5">
+        <div id="home" class="tab-pane fade in active">
+            <br>
+            <h5>HOME</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <br>
+            <h5>Menu 1</h5>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <br>
+            <h5>Menu 2</h5>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <br>
+            <h5>Menu 3</h5>
+            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

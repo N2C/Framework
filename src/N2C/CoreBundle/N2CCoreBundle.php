@@ -2,7 +2,7 @@
 
 namespace N2C\CoreBundle;
 
-use N2C\CoreBundle\DependencyInjection\Compiler\NavbarCompilerPass;
+use N2C\CoreBundle\DependencyInjection\Compiler\MenuCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -12,6 +12,6 @@ class N2CCoreBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new NavbarCompilerPass());
+        $container->addCompilerPass(new MenuCompilerPass());
     }
 }

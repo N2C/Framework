@@ -16,36 +16,42 @@ class Builder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
-    private $navbarServices;
-    private $factory;
+    private $menuServices;
+    
 
-    public function __construct(FactoryInterface $factory)
+    public function __construct()
     {
-        $this->factory = $factory;
-        $this->navbarServices = array();
+        $this->menuServices = array();
     }
 
-    public function addNavbarService(NavbarInterface $navbarService)
+    public function addMenuService(MenuInterface $menuService)
     {
-        $this->navbarServices[] = $navbarService;
+        $this->menuServices[] = $menuService;
     }
+    
 
 
-    public function getNavbarMenu(array $options)
+    public function getNavbarMenu()
     {
 
-        $menu = $this->factory->createItem('root');
+        $menu = new MenuItem();
 
-        $menu->setChildrenAttribute('class', 'nav navbar-nav');
-        $menu->addChild('Projects')
-            ->setAttribute('icon', 'fa fa-list');
-        $menu->addChild('Employees')
-            ->setAttribute('icon', 'fa fa-group');
-        foreach ($this->navbarServices as $menuBuilder){
-            $menuBuilder->getNavbarItems($menu);
+
+
+        foreach($this->menuServices as $menuService) {
+            $menuService->getNavbarItems($menu);
         }
 
         return $menu;
+    }
+
+    public function getTopBarItems()
+    {
+        $menu = new MenuItem();
+
+        foreach($this->menuServices as $menuService){
+            $menuService->getTopBarItems($menu);
+        }
     }
 }
 

@@ -23,8 +23,41 @@ class MenuItem
 
     protected $parent;
 
+    protected $attributes=array();
+
+    protected $icon;
 
 
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+
+    public function setIcon($icon)
+    {
+        $this->icon = (string) $icon;
+        return $this;
+    }
+    
+
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+    
+    public function setAttributes($attributes)
+    {
+        $this->attributes = $attributes;
+    }
+
+    public function addAttributes($key, $attribute){
+        $this->attributes[$key] = $attribute;
+    }
+
+    public function hasAttribute($key){
+        return (isset($this->attributes[$key])) ? $this->attributes[$key] : false ;
+    }
 
     /**
      * @return string
@@ -34,12 +67,11 @@ class MenuItem
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     */
+
     public function setContent($content)
     {
         $this->content = $content;
+        return $this;
     }
 
     /**
@@ -50,12 +82,11 @@ class MenuItem
         return $this->action;
     }
 
-    /**
-     * @param string $action
-     */
+
     public function setAction($action)
     {
         $this->action = $action;
+        return $this;
     }
 
     /**
@@ -66,12 +97,11 @@ class MenuItem
         return $this->uri;
     }
 
-    /**
-     * @param string $uri
-     */
+
     public function setUri($uri)
     {
         $this->uri = $uri;
+        return $this;
     }
 
     /**
@@ -82,12 +112,11 @@ class MenuItem
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
+
     public function setType($type)
     {
         $this->type = $type;
+        return $this;
     }
 
 
@@ -102,12 +131,12 @@ class MenuItem
 
     public function addChild(MenuItem $child)
     {
-        if(!empty($child-$this->getParent())){
+        if(!empty($child->getParent())){
             throw new \InvalidArgumentException('Child passed to addChild must have any parent');
         }
-        
         $this->children[] = $child;
         $child->setParent($this);
+
         return $child;
     }
 
@@ -136,7 +165,7 @@ class MenuItem
 
     public function hasChildren()
     {
-       return (!empty($this->children));
+       return !(empty($this->children));
     }
 
 }

@@ -3,8 +3,8 @@ services:
 #        class: N2C\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
     n2c_user.menu:
-        class: N2C\UserBundle\Menu\Navbar
-        arguments: ['@security.authorization_checker']
+        class: N2C\UserBundle\Menu\MenuBuilder
+        arguments: ['@security.authorization_checker', '@router']
         tags:
-            - { name: n2c_core.navbar }
+            - { name: n2c_core.menu }
 

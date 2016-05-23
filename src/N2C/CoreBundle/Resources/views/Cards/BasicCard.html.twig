@@ -6,7 +6,7 @@
                 <p>{{ card.content }}</p>
             </div>
             <div class="card-action">
-                {% if is not empty(card.action) %}
+                {% if card.action is not empty %}
                 {% for action in card.action %}
                 <a href="{{ action.href }}">{{ action.label }}</a>
                 {% endfor %}

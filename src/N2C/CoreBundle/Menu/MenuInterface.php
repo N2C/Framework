@@ -10,7 +10,9 @@ namespace N2C\CoreBundle\Menu;
 
 
 
-interface NavbarInterface
+interface MenuInterface
 {
     public function getNavbarItems(MenuItem $menu);
+
+    public function getTopBarItems(MenuItem $menu);
 }

@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Reference;
 
-class NavbarCompilerPass implements CompilerPassInterface
+class MenuCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
@@ -20,8 +20,8 @@ class NavbarCompilerPass implements CompilerPassInterface
             return;
         }
 
-        foreach ($container->findTaggedServiceIds('n2c_core.navbar') as $id => $attributes) {
-            $container->getDefinition('n2c_core.menu_builder')->addMethodCall('addNavbarService', array(new Reference($id)));
+        foreach ($container->findTaggedServiceIds('n2c_core.menu') as $id => $attributes) {
+            $container->getDefinition('n2c_core.menu_builder')->addMethodCall('addMenuService', array(new Reference($id)));
         }
     }
 }

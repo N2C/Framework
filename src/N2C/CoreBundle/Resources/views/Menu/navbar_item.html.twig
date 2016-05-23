@@ -1,0 +1,39 @@
+{% if item.hasChildren %}
+    <ul class="collapsible collapsible-accordion">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children collapsible collapsible-accordion menu-item-344">
+            <a class="collapsible-header waves-effect waves-light">
+                {% if item.icon is not empty %}
+                    <i class="{{ item.icon }}"></i>
+                {% endif %}
+                {{ item.content }}
+                <span class="caret"></span>
+            </a>
+            <div class="collapsible-body" style="display: none;">
+                <ul class="sub-menu">
+                    {% for child in item.children %}
+                        {% include "N2CCoreBundle:Menu:navbar_item.html.twig" with { "item": child} %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+    </ul>
+{% elseif item.getType == "link" and not item.hasChildren %}
+<ul class="collapsible collapsible-accordion">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page collapsible collapsible-accordion menu-item-358">
+            <a class="waves-effect waves-light" href="{{ item.getUri }}">
+                {% if item.icon is not empty %}
+                    <i class="{{ item.icon }}"></i>
+                {% endif %}
+                {{ item.content }}
+            </a>
+        </li>
+    </ul>
+{% elseif item.getType == "link" and item.hasChildren %}
+    <li class="menu-item menu-item-type-post_type menu-item-object-page collapsible collapsible-accordion menu-item-358">
+        <a class="waves-effect waves-light" href="{{ item.getUri }}">
+            {% if item.icon is not empty %}
+                <i class="{{ item.icon }}"></i>
+            {% endif %}
+            {{ item.content }}</a>
+    </li>
+{% endif %}
